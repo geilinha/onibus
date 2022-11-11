@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import rotaOnibus.controller.Main;
 import rotaOnibus.model.BairroBean;
+import rotaOnibus.model.RotaBean;
 
 public class View {
 
@@ -26,7 +27,8 @@ public class View {
 		System.out.println();
 		System.out.println("1 - Cadastrar ônibus");
 		System.out.println("2 - Cadastrar rota");
-		System.out.println("3 - Iniciar uma rota");
+		System.out.println("3 - Alterar rota");
+		System.out.println("4 - Deletar rota");
 		
 	}
 	
@@ -58,18 +60,55 @@ public class View {
 	}
 
 	public void inserirBairro() {
-		System.out.println("Insirra o Id do bairro que deseja adicionar a lista: ");
+		System.out.println("Insira o Id do bairro que deseja adicionar a lista: ");
+	}
+	public void removerBairro() {
+		System.out.println("Insira o Id do bairro que deseja remover da rota: ");
 	}
 	
 	public void quantidadeBairros() {
 		System.out.println("Quantos bairros deseja adicionar a rota?");
 	}
 	
+	public void mensagemSucesso() {
+		System.out.println("Adicionado com sucesso!");
+		System.out.println("====================================");
+	}
+
+	public void inserirDescricao() {
+		System.out.println("Insira a descrição: ");
+	}
 	
+	public void inserirKm() {
+		System.out.println("Insira o km da rota: ");
+	}
+
+	public void tracejado() {
+		System.out.println("====================================");
+	}
 	
+	public void alterarRota() {
+		System.out.println("Insira o Id da rota que deseja alterar: ");
+	}
 	
+	public void mostrarRotaList() {
+		for (RotaBean obj : Main.rotaList) {
+			System.out.println(obj);
+		}
+		System.out.println();
+	}
 	
-	
+	public void menuAlterar() {
+		System.out.println("====================================");
+		System.out.println("=========== ALTERAR ROTA ===========");
+		System.out.println("Escolha uma das opções abaixo:");
+		System.out.println();
+		System.out.println("1 - Alterar descrição");
+		System.out.println("2 - Adicionar bairro");
+		System.out.println("3 - Deletar bairro");
+		System.out.println("4 - Alterar Km");
+
+	}
 	
 	
 	

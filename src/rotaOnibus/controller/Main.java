@@ -15,6 +15,7 @@ import rotaOnibus.model.RotaBean;
 public class Main {
 
 	public static List<OnibusBean> onibusList = new ArrayList<OnibusBean>();
+	public static List<RotaBean> rotaList = new ArrayList<RotaBean>();
 	public static List<BairroBean> bairroList = new ArrayList<BairroBean>();
 
 	static {
@@ -28,51 +29,26 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
-		View view = new View(sc);
+		do {
+			Scanner sc = new Scanner(System.in);
+			View view = new View(sc);
 
-		view.viewTelaInicial();
-		view.Menu();
-		Character escolha = sc.next().charAt(0);
+			view.viewTelaInicial();
+			view.Menu();
+			Character escolha = sc.next().charAt(0);
 
-		if (escolha.equals('1')) {
-			view.CadastroOnibus();
+			if (escolha.equals('1')) {
+				Controller.cadastrarOnibus(sc, view);
+			}
+			if (escolha.equals('2')) {
+				Controller.cadastrarRota(sc, view);
 
-			view.inserirVeiculo();
-			String descricao = sc.next();
-
-			view.inserirKmL();
-			BigDecimal kmLitro = sc.nextBigDecimal();
-
-			OnibusBO oniBO = new OnibusBO(new OnibusBean(descricao, kmLitro));
-			oniBO.adicionarOnibus();
-		}
-		if (escolha.equals('2')) {
-			view.CadastroRota();
-			view.mostrarBairroList();
-			view.quantidadeBairros();
-			Integer quantidade = sc.nextInt();
-
-			for (int i = 1; i <= quantidade; i++) {
-
-				view.inserirBairro();
-				Integer baiId = sc.nextInt();
-
-				for (BairroBean bairro : Main.bairroList) {
-					if (bairro.getId().equals(baiId)) {
-						BairroBean baiBean = bairro;
-						RotaBO rotBO = new RotaBO(new RotaBean());
-						rotBO.addBairro(baiBean);
-					}
-				}
+			}
+			if (escolha.equals('3')) {
+				Controller.alterarRota(sc, view);
 			}
 
-		}
-		
-		if (escolha.equals('3')) {
-			
-		}
-
+		} while(true);
 	}
 
 }

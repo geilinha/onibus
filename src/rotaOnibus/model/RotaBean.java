@@ -1,13 +1,14 @@
 package rotaOnibus.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RotaBean {
 
-	private static Integer id;
+	private Integer id;
 	private String descricao;
-	private List<BairroBean> baiList;
+	private List<BairroBean> baiList = new ArrayList<BairroBean>();
 	private BigDecimal kmRodados;
 	
 	public RotaBean() {
@@ -21,6 +22,10 @@ public class RotaBean {
 
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
@@ -46,5 +51,11 @@ public class RotaBean {
 	public void setKmRodados(BigDecimal kmRodados) {
 		this.kmRodados = kmRodados;
 	}
+
+	@Override
+	public String toString() {
+		return "RotaBean [Id=" + id + ", descricao=" + descricao + ", baiList=" + baiList + ", kmRodados=" + kmRodados + "]";
+	}
+	
 	
 }
